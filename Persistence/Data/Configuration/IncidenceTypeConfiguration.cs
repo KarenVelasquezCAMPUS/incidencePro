@@ -1,10 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistence.Data.Configuration;
-public class IncidenceTypeConfiguration
+namespace Persistence.Data.Configuration
 {
-    
+  public class IncidenceTypeConfiguration : IEntityTypeConfiguration<IncidenceType>
+  {
+    public void Configure(EntityTypeBuilder<IncidenceType> builder)
+    {
+      builder.ToTable("incidencetype");
+
+      builder.HasKey(p => p.Id);
+
+      builder.Property(i => i.Id )
+      .IsRequired();
+
+      builder.Property(i => i.Name)
+      .IsRequired()
+      .HasMaxLength(50);
+
+      builder.Property(i => i.Description)
+      .IsRequired()
+      .HasMaxLength(100);
+    }
+  }
 }

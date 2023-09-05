@@ -13,6 +13,7 @@ public class ApiIncidenceProContext : DbContext
     {
     }
     public DbSet<Area> Areas { get; set; }
+    public DbSet<AreaUser> AreaUsers { get; set; }
     public DbSet<Contact> Contacts { get; set; }
     public DbSet<ContactCategory> ContactCategories { get; set; }
     public DbSet<ContactType> ContactTypes { get; set; }
