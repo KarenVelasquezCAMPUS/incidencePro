@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApiIncidenceProContext>(options =>
 {
-    string connectionString = builder.Configuration.GetConnectionString("ConnexMysql");
+    string connectionString = builder.Configuration.GetConnectionString("ConexMysql");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
