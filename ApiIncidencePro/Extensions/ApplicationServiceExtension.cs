@@ -1,3 +1,5 @@
+using Application.UnitOfWork;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 
 namespace ApiIncidencePro.Extensions;
@@ -11,4 +13,8 @@ public static class ApplicationServiceExtension
             .AllowAnyMethod()
             .AllowAnyHeader());
     });
+    public static void AddAppplicationServices(this IServiceCollection services)
+    {
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+    }
 }
