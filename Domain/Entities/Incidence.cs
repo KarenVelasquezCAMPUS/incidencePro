@@ -9,6 +9,8 @@ public class Incidence
     public User User { get; set; }
     public int IdAreaFk { get; set; }
     public Area Area { get; set; }
+    public ICollection<Area> Areas { get; set; }
     public int IdPlaceFk { get; set; }
     public Place Place { get; set; }
+    public ICollection<IncidenceDetail> IncidenceDetails { get; set; }
 }
