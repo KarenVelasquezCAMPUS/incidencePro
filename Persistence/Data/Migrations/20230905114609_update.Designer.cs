@@ -12,7 +12,7 @@ namespace Persistence.Data.Migrations
 {
     [DbContext(typeof(ApiIncidenceProContext))]
     [Migration("20230905114609_update")]
-    partial class update
+    partial class Update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
