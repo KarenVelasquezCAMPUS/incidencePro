@@ -1,5 +1,6 @@
 using System.Reflection;
 using ApiIncidencePro.Extensions;
+using AspNetCoreRateLimit;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -14,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureCors();
 builder.Services.AddApplicationServices();
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
+builder.Services.ConfigureRatelimiting();
 
 builder.Services.AddDbContext<ApiIncidenceProContext>(options =>
 {
@@ -33,6 +35,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
+
+app.UseIpRateLimiting();
 
 app.UseAuthorization();
 
