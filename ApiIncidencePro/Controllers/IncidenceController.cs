@@ -57,14 +57,14 @@ public class IncidenceController : BaseApiController
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Incidence>> Post(IncidenceDto incidenceDto){
-        var incidence = _mapper.Map<IncidenceDto>(incidenceDto);
+        var incidence = _mapper.Map<Incidence>(incidenceDto);
         this._unitOfWork.Incidences.Add(incidence);
         await _unitOfWork.SaveAsync();
         if (incidence == null)
         {
             return BadRequest();
         }
-        incidenceDto.IncidenceId = incidence.IncidenceId;
+        incidenceDto.IncidenceId = incidence.Id;
         return CreatedAtAction(nameof(Post), new {id = incidenceDto.IncidenceId}, incidenceDto); 
     }
     // [PUT]
