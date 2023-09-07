@@ -68,7 +68,7 @@ public class IncidenceController : BaseApiController
         return CreatedAtAction(nameof(Post), new {id = incidenceDto.IncidenceId}, incidenceDto); 
     }
     // [PUT]
-    [HttpPut("{id}")]
+    /* [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -78,6 +78,18 @@ public class IncidenceController : BaseApiController
         _unitOfWork.Incidences.Update(incidence);
         await _unitOfWork.SaveAsync();
         return incidence;
+    } */
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IncidenceDto>> Put(int id, [FromBody]IncidenceDto incidenceDto){
+        if(incidenceDto == null)
+            return NotFound();
+        var incidences = _mapper.Map<Incidence>(incidenceDto);
+        _unitOfWork.Incidences.Update(incidences);
+        await _unitOfWork.SaveAsync();
+        return incidenceDto;
     }
     // [DELETE]
     [HttpDelete("{id}")]
