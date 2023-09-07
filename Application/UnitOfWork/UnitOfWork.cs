@@ -195,13 +195,14 @@ namespace Application.UnitOfWork
             }
         }
 
-        public int Save(){
-            return context.SaveChanges();
-        }
-
         public void Dispose()
         {
             context.Dispose();
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            return await context.SaveChangesAsync();
         }
     }
 }

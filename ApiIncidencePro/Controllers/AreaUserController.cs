@@ -21,10 +21,10 @@ public class AreaUserController : BaseApiController
         var areaUsers = await _unitOfWork.AreaUsers.GetAllAsync();
         return Ok(areaUsers);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var areaUsers = await _unitOfWork.AreaUsers.GetByIdAsync(id);
         return Ok(areaUsers);

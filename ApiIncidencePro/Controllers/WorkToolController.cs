@@ -21,10 +21,10 @@ public class WorkToolController : BaseApiController
         var workTools = await _unitOfWork.WorkTools.GetAllAsync();
         return Ok(workTools);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var workTools = await _unitOfWork.WorkTools.GetByIdAsync(id);
         return Ok(workTools);

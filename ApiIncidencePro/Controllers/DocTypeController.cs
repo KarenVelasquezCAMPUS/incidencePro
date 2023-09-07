@@ -20,10 +20,10 @@ public class DocTypeController : BaseApiController
         var docTypes = await _unitOfWork.DocTypes.GetAllAsync();
         return Ok(docTypes);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var docTypes = await _unitOfWork.DocTypes.GetByIdAsync(id);
         return Ok(docTypes);

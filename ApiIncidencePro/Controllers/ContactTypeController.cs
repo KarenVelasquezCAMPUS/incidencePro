@@ -20,10 +20,10 @@ public class ContactTypeController : BaseApiController
         var contactTypes = await _unitOfWork.ContactTypes.GetAllAsync();
         return Ok(contactTypes);
     } 
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GeId(int id)
     {
         var contactTypes = await _unitOfWork.ContactTypes.GetByIdAsync(id);
         return Ok(contactTypes);

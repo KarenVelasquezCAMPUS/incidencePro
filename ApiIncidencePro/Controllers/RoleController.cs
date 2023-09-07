@@ -20,10 +20,10 @@ public class RoleController : BaseApiController
         var roles = await _unitOfWork.Roles.GetAllAsync();
         return Ok(roles);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var roles = await _unitOfWork.Roles.GetByIdAsync(id);
         return Ok(roles);

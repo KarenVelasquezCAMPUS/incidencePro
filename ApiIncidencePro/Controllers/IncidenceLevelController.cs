@@ -20,10 +20,10 @@ public class IncidenceLevelController : BaseApiController
         var incidenceLevels = await _unitOfWork.IncidenceLevels.GetAllAsync();
         return Ok(incidenceLevels);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var incidenceLevels = await _unitOfWork.IncidenceLevels.GetByIdAsync(id);
         return Ok(incidenceLevels);

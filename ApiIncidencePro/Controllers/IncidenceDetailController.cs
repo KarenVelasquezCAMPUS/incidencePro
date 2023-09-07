@@ -20,10 +20,10 @@ public class IncidenceDetailController : BaseApiController
         var incidenceDetails = await _unitOfWork.IncidenceDetails.GetAllAsync();
         return Ok(incidenceDetails);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var incidenceDetails = await _unitOfWork.IncidenceDetails.GetByIdAsync(id);
         return Ok(incidenceDetails);

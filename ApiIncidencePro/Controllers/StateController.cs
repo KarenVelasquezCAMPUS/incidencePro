@@ -20,10 +20,10 @@ public class StateController : BaseApiController
         var states = await _unitOfWork.States.GetAllAsync();
         return Ok(states);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var states = await _unitOfWork.States.GetByIdAsync(id);
         return Ok(states);

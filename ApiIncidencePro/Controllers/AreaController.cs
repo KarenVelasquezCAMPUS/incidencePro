@@ -22,14 +22,14 @@ public class AreaController : BaseApiController
         return Ok(areas);
     }
     // [GET] Permite retornar un registro especifico apartir del id principal
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var areas = await _unitOfWork.Areas.GetByIdAsync(id);
         return Ok(areas);
-    }
+    } 
     // [POST]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]

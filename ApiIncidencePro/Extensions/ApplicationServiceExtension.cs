@@ -13,7 +13,7 @@ public static class ApplicationServiceExtension
             .AllowAnyMethod()
             .AllowAnyHeader());
     });
-    public static void AddAppplicationServices(this IServiceCollection services)
+    public static void AddApplicationServices(this IServiceCollection services)
     {
         //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         //services.AddScoped<IAreaInterface, AreaRepository>();

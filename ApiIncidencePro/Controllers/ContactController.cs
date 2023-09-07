@@ -11,6 +11,7 @@ public class ContactController : BaseApiController
     {
         this._unitOfWork = unitOfWork;
     }
+    // [GET]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -19,10 +20,10 @@ public class ContactController : BaseApiController
         var contacts = await _unitOfWork.Contacts.GetAllAsync();
         return Ok(contacts);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var contacts = await _unitOfWork.Contacts.GetByIdAsync(id);
         return Ok(contacts);

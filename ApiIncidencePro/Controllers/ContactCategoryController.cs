@@ -20,10 +20,10 @@ public class ContactCategoryController : BaseApiController
         var contactCategories = await _unitOfWork.ContactCategories.GetAllAsync();
         return Ok(contactCategories);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var contactCategories = await _unitOfWork.ContactCategories.GetByIdAsync(id);
         return Ok(contactCategories);

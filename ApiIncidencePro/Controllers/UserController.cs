@@ -20,10 +20,10 @@ public class UserController : BaseApiController
         var users = await _unitOfWork.Users.GetAllAsync();
         return Ok(users);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var users = await _unitOfWork.Users.GetByIdAsync(id);
         return Ok(users);

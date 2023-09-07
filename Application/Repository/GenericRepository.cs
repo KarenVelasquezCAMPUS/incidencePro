@@ -40,10 +40,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     return await _context.Set<T>().FindAsync(id);
   }
 
-  /* public Task<T> GetByIdAsync(string id)
+  public Task<T> GetByIdAsync(string id)
   {
     throw new NotImplementedException();
-  } */
+  } 
 
     public Task<IEnumerable<T>> GetByIdAsync()
     {

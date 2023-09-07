@@ -20,10 +20,10 @@ public class PlaceController : BaseApiController
         var places = await _unitOfWork.Places.GetAllAsync();
         return Ok(places);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> GetId(int id)
     {
         var places = await _unitOfWork.Places.GetByIdAsync(id);
         return Ok(places);
