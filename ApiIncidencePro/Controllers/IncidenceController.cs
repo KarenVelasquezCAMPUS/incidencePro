@@ -1,3 +1,4 @@
+using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -6,10 +7,12 @@ namespace ApiIncidencePro.Controllers;
 public class IncidenceController : BaseApiController
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
-    public IncidenceController(IUnitOfWork unitOfWork)
+    public IncidenceController(IUnitOfWork unitOfWork, IMapper mapper)
     {
         this._unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
     // [GET]
     [HttpGet]
