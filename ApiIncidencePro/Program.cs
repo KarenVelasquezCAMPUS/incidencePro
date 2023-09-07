@@ -16,6 +16,7 @@ builder.Services.ConfigureCors();
 builder.Services.AddApplicationServices();
 builder.Services.AddAutoMapper(Assembly.GetEntryAssembly());
 builder.Services.ConfigureRatelimiting();
+builder.Services.ConfigureApiVersioning();
 
 builder.Services.AddDbContext<ApiIncidenceProContext>(options =>
 {
