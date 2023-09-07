@@ -49,6 +49,8 @@ public static class ApplicationServiceExtension
     {
         services.AddApiVersioning(options =>
         {
+            options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+            options.AssumeDefaultVersionWhenUnspecified = true;
         });
     }
 }
