@@ -40,10 +40,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     return await _context.Set<T>().FindAsync(id);
   }
 
-  public Task<T> GetByIdAsync(string id)
+  /* public Task<T> GetByIdAsync(string id)
   {
     throw new NotImplementedException();
-  }
+  } */
 
     public Task<IEnumerable<T>> GetByIdAsync()
     {
@@ -65,4 +65,14 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     _context.Set<T>()
             .Update(entity);
   }
+
+  public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(int pageIndex, int pageSize, string _search)
+    {
+        var totalRegistros = await _context.Set<T>().CountAsync();
+        var registros = await _context.Set<T>()
+            .Skip((pageIndex - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+        return (totalRegistros, registros);
+    }
 }

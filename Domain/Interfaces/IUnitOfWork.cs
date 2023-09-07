@@ -16,4 +16,5 @@ public interface IUnitOfWork
     IStateRepository States { get; }
     IUserRepository Users { get; }
     IWorkToolRepository WorkTools { get; }
+    Task<int> SaveAsync();
 }
