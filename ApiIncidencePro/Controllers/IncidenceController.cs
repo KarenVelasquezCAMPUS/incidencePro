@@ -41,7 +41,7 @@ public class IncidenceController : BaseApiController
         return Ok(incidences);
     }
     // [POST]
-    [HttpPost]
+    /* [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Incidence>> Post(Incidence incidence){
@@ -52,6 +52,20 @@ public class IncidenceController : BaseApiController
             return BadRequest();
         }
         return CreatedAtAction(nameof(Post), new {id = incidence.Id}, incidence); 
+    } */
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Incidence>> Post(IncidenceDto incidenceDto){
+        var incidence = _mapper.Map<IncidenceDto>(incidenceDto);
+        this._unitOfWork.Incidences.Add(incidence);
+        await _unitOfWork.SaveAsync();
+        if (incidence == null)
+        {
+            return BadRequest();
+        }
+        incidenceDto.IncidenceId = incidence.IncidenceId;
+        return CreatedAtAction(nameof(Post), new {id = incidenceDto.IncidenceId}, incidenceDto); 
     }
     // [PUT]
     [HttpPut("{id}")]
