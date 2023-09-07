@@ -1,3 +1,4 @@
+using ApiIncidencePro.Dtos;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
@@ -15,13 +16,21 @@ public class IncidenceController : BaseApiController
         _mapper = mapper;
     }
     // [GET]
-    [HttpGet]
+    /* [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<Incidence>>> Get()
     {
         var incidences = await _unitOfWork.Incidences.GetAllAsync();
         return Ok(incidences);
+    } */
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<IncidenceDto>>> Get()
+    {
+        var incidences = await _unitOfWork.Incidences.GetAllAsync();
+        return _mapper.Map<List<IncidenceDto>>(incidences);
     }
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
