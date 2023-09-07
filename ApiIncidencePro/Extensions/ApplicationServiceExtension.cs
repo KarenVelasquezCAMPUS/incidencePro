@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Application.UnitOfWork;
 using AspNetCoreRateLimit;
 using Domain.Interfaces;
@@ -42,6 +43,12 @@ public static class ApplicationServiceExtension
                 }
             };
 
+        });
+    }
+    public static void ConfigureApiVersioning(this IServiceCollection services)
+    {
+        services.AddApiVersioning(options =>
+        {
         });
     }
 }
